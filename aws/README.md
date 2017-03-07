@@ -22,7 +22,7 @@ myConfig.update({region: 'us-east-1'});
 See the [AWS SDK reference docs](https://aws.amazon.com/sdk-for-node-js/).
 
 ### Table of Contents
- * [Amazon-S3](Amazon-S3)
+ * [Amazon-S3](Amazon-S3#title)
 
 
 ### IAM Roles

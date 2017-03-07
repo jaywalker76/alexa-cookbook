@@ -18,6 +18,7 @@ If you manage your Lambda code in a local folder on your laptop, you can test yo
    + You can define and use a remote test in your ```src/package.json``` configuration file, under the ```scripts``` section.  Verify the *invoke* command and then type in the command: ```npm invoke``` to a terminal prompt.  This will test the function that exists within AWS Lambda.  You will need to have previously installed and configured the [AWS CLI](https://developer.amazon.com/blogs/post/Tx1UE9W1NQ0GYII/publishing-your-skill-code-to-lambda-via-the-command-line-interface) for this to work.
 
 If the test works, you should see a formatted JSON response similar to this:
+
 ```
 {
 	"version": "1.0",
@@ -33,7 +34,7 @@ If the test works, you should see a formatted JSON response similar to this:
 ```
 
 
-See also [Tools](../Tools#title)
+See also [tools](../tools#title)
 
 <hr />
 

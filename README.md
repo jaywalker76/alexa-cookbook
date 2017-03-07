@@ -14,19 +14,19 @@ Alexa skills follow the same model. Basic ingredients can be added together to c
 This Cookbook is a desk reference for other Alexa Skill design materials.
 
 #### Table of Contents <a id="toc"></a>
- + [ExternalCalls](ExternalCalls#title) shows how to call APIs and web services
- + [Amazon Web Services](Amazon Web Services#title) shows how to call specific services within AWS
+ + [external-calls](external-calls#title) shows how to call APIs and web services
+ + [aws](aws#title) shows how to call specific services within AWS
 
 
 #### Before Cooking (pre-requisites)
 
 Recommended:
 * You should have some experience with scripting or Javascript programming.
-* Review and install developer utilities from the [Tools](/Tools#title) folder
+* Review and install developer utilities from the [tools](/tools#title) folder
 
 #### After Cooking (testing)
 
-* Review the [Testing](Testing#title) folder for various ways you can test your skill during development.
+* Review the [testing](testing#title) folder for various ways you can test your skill during development.
 
 <hr />
 

@@ -2,10 +2,6 @@
 ## S3 read <a id="title"></a>
 
 
-#### What you will learn
-
-The Amazon [Simple Storage Service](https://aws.amazon.com/s3), or S3, is an object store service.  You can think of it like a filesystem.
-You first create a bucket, which is like a hard drive.  Then you can upload files, and create folders to organize your files.
 
 
 #### Instructions for deploying this sample skill

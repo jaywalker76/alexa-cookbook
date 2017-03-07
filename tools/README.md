@@ -71,7 +71,7 @@ Read and follow the guide to [Publishing Your Skill Code to Lambda via the Comma
   * Navigate to the ```src/``` folder and type ```npm deploy```.  This runs the commands defined in the scripts.deploy section of the ```src/package.json``` file.  You will need to customize the ```function-name``` in a few places from the default of HelloWorld.
 
 
-See also [Testing Tools](../Testing#title)
+See also [How To Test](../testing#title)
 
 Back to the [Home Page](../README.md#title)
 

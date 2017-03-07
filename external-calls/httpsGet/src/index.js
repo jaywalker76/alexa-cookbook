@@ -1,9 +1,16 @@
-// How to use this file.  This is a cookbook sample.
-// There are three sections.
+// alexa-cookbook sample code
 
-// 1. Text strings
-var welcomeMessage = 'hello';
-//=======================================================================================================================================
+// There are three sections, Text Strings, Skill Code, and Helper Function(s).
+// You can copy and paste the entire file contents as the code for a new Lambda function,
+//  or copy & paste section #3, the helper function, to the bottom of your existing Lambda code.
+
+
+// 1. Text strings ==================================================================================================
+//    Modify these strings and messages to change the behavior of your Lambda function
+
+var myRequest = 'Florida';
+
+// 2. Skill Code ==================================================================================================
 
 
 var Alexa = require('alexa-sdk');
@@ -25,9 +32,6 @@ var handlers = {
 
     'MyIntent': function () {
 
-        var pop = 0;
-        // var myRequest = 'Florida';
-
         httpsGet(myRequest,  myResult => {
                 console.log("sent     : " + myRequest);
                 console.log("received : " + myResult);
@@ -40,18 +44,14 @@ var handlers = {
     }
 };
 
-//=======================================================================================================================================
 
-
-// END of Intent Handlers ---------------------------------------------------------------------
-// Paste in any helper functions below --------------------------------------------------------
+//    END of Intent Handlers {} ======================================================================================
+// 3. Helper Function  ===============================================================================================
 
 
 var https = require('https');
 // https is a default part of Node.JS.  Read the developer doc:  https://nodejs.org/api/https.html
 // try other APIs such as the current bitcoin price : https://btc-e.com/api/2/btc_usd/ticker  returns ticker.last
-
-
 
 function httpsGet(myData, callback) {
 
@@ -60,7 +60,7 @@ function httpsGet(myData, callback) {
     // https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource?usstate=New%20Jersey
 
 
-    // Update these options with the details of your own web service
+    // Update these options with the details of the web service you would like to call
     var options = {
         host: 'cp6gckjt97.execute-api.us-east-1.amazonaws.com',
         port: 443,
@@ -86,12 +86,9 @@ function httpsGet(myData, callback) {
             // console.log(JSON.stringify(returnData))
             // we may need to parse through it to extract the needed data
 
-
             var pop = JSON.parse(returnData).population;
 
-
-            callback(pop);
-
+            callback(pop);  // this will execute whatever function the caller defined, with one argument
 
         });
 

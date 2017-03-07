@@ -2,7 +2,6 @@
 ### Alexa Skill Building Cookbook
 ## Ingredients <a id="title"></a>
 
-![ASK](Tools/images/alexa_sm.png)
 
 #### Welcome! <a id="intro"></a>
 

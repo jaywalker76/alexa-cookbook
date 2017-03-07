@@ -17,8 +17,8 @@ See the [HTTPS reference docs](https://nodejs.org/api/https.html).
 
 
 ### Table of Contents
-+ [GET sample function](httpsGet#title)
-+ [POST sample function](httpsPost#title)
++ [GET web service call](httpsGet#title)
++ [POST web service call](httpsPost#title)
 
 
 Back to the [Home Page](../README.md#title)

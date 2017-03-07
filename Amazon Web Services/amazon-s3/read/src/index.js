@@ -25,7 +25,7 @@ var handlers = {
             Key: 'hello.txt'
         };
 
-        helper.S3read(myParams,  myResult => {
+        S3read(myParams,  myResult => {
                 console.log("sent     : " + JSON.stringify(myParams));
                 console.log("received : " + myResult);
 
@@ -40,8 +40,6 @@ var handlers = {
 // END of Intent Handlers ---------------------------------------------------------------------
 // Paste in any helper functions below --------------------------------------------------------
 
-
-var helper = {
 
     S3read: function (params, callback) {
         // call AWS S3
@@ -60,4 +58,4 @@ var helper = {
             }
         });
     }
-};
+

@@ -4,7 +4,7 @@
 
 #### What you will learn
 
-The AWS [Simple Storage Service](https://aws.amazon.com/s3), or S3, is an object store service.  You can think of it like a filesystem.
+The Amazon [Simple Storage Service](https://aws.amazon.com/s3), or S3, is an object store service.  You can think of it like a filesystem.
 You first create a bucket, which is like a hard drive.  Then you can upload files, and create folders to organize your files.
 
 

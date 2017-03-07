@@ -1,3 +1,11 @@
+// How to use this file.  This is a cookbook sample.
+// There are three sections.
+
+// 1. Text strings
+var welcomeMessage = 'hello';
+//=======================================================================================================================================
+
+
 var Alexa = require('alexa-sdk');
 
 exports.handler = function(event, context, callback) {
@@ -18,7 +26,7 @@ var handlers = {
     'MyIntent': function () {
 
         var pop = 0;
-        var myRequest = 'Florida';
+        // var myRequest = 'Florida';
 
         httpsGet(myRequest,  myResult => {
                 console.log("sent     : " + myRequest);
@@ -31,6 +39,9 @@ var handlers = {
 
     }
 };
+
+//=======================================================================================================================================
+
 
 // END of Intent Handlers ---------------------------------------------------------------------
 // Paste in any helper functions below --------------------------------------------------------
@@ -49,6 +60,7 @@ function httpsGet(myData, callback) {
     // https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource?usstate=New%20Jersey
 
 
+    // Update these options with the details of your own web service
     var options = {
         host: 'cp6gckjt97.execute-api.us-east-1.amazonaws.com',
         port: 443,

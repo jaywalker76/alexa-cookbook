@@ -15,7 +15,7 @@ This Cookbook is a desk reference for other Alexa Skill design materials.
 
 #### Table of Contents <a id="toc"></a>
  + [ExternalCalls](ExternalCalls#title) shows how to call APIs and web services
- + [AWS](AWS#title) shows how to call specific services within AWS
+ + [Amazon Web Services](Amazon Web Services#title) shows how to call specific services within AWS
 
 
 #### Before Cooking (pre-requisites)

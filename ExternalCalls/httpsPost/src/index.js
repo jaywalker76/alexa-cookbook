@@ -18,9 +18,9 @@ var handlers = {
     'MyIntent': function () {
 
         var pop = 0;
-        var myRequest = 'Florida';
+        var myRequest = 'Virginia';
 
-        httpsGet(myRequest,  myResult => {
+        httpsPost(myRequest,  myResult => {
                 console.log("sent     : " + myRequest);
                 console.log("received : " + myResult);
 
@@ -41,50 +41,44 @@ var https = require('https');
 // try other APIs such as the current bitcoin price : https://btc-e.com/api/2/btc_usd/ticker  returns ticker.last
 
 
-
-function httpsGet(myData, callback) {
+function httpsPost(myData, callback) {
 
     // GET is a web service request that is fully defined by a URL string
     // Try GET in your browser:
     // https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource?usstate=New%20Jersey
 
 
-    var options = {
-        host: 'cp6gckjt97.execute-api.us-east-1.amazonaws.com',
-        port: 443,
-        path: '/prod/stateresource?usstate=' + encodeURIComponent(myData),
-        method: 'GET',
+    var post_data = {"usstate": myData};
 
-        // if x509 certs are required:
-        // key: fs.readFileSync('certs/my-key.pem'),
-        // cert: fs.readFileSync('certs/my-cert.pem')
+    var post_options = {
+        host:  'cp6gckjt97.execute-api.us-east-1.amazonaws.com',
+        port: '443',
+        path: '/prod/stateresource',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(JSON.stringify(post_data))
+        }
     };
 
-    var req = https.request(options, res => {
+    var post_req = https.request(post_options, res => {
         res.setEncoding('utf8');
         var returnData = "";
-
-        res.on('data', chunk => {
-            returnData = returnData + chunk;
+        res.on('data', chunk =>  {
+            returnData += chunk;
         });
-
         res.on('end', () => {
-            // we have now received the raw return data in the returnData variable.
-            // We can see it in the log output via:
-            // console.log(JSON.stringify(returnData))
-            // we may need to parse through it to extract the needed data
+            // this particular API returns a JSON structure:
+            // returnData: {"usstate":"New Jersey","population":9000000}
 
+            population = JSON.parse(returnData).population;
 
-            var pop = JSON.parse(returnData).population;
-
-
-            callback(pop);
-
+            callback(population);
 
         });
-
     });
-    req.end();
+    post_req.write(JSON.stringify(post_data));
+    post_req.end();
 
 }
 

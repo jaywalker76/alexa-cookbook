@@ -13,7 +13,9 @@ For example, your function can define the following module:
 
 You can make a POST call to a service such as:
 
-```https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource```
+```
+https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource
+```
 
 Unlike an HTTPS GET, you cannot test a POST URL in your browser to see the web service in action.
 A POST service expects a specially formatted request message to be packaged and transmitted by your code to the service endpoint.

@@ -12,8 +12,30 @@ You first create a bucket, which is like a hard drive.  Then you can upload file
  * [write](write#title)
 
 
+### IAM Role Permissions
+
+The following IAM Policy can be modified and added to your Lambda function's IAM role to allow reading and writing to a specific S3 bucket.
+See the [IAM Policies](../IAM_POLICIES.md) page for more details.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject"
+      ],
+      "Resource":["arn:aws:s3:::mysuperbucket/*"],
+    }
+  ]
+}
+```
+
  *You can learn more about S3 from the [Getting Started with S3](http://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html) documentation.*
 
 
 <hr />
-Back to the [github.com/alexa](https://github.com/alexa) home page.
+Back to the [Home Page](../../README.md#title)
+

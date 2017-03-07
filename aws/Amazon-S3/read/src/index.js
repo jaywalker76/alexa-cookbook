@@ -1,3 +1,18 @@
+// alexa-cookbook sample code
+
+// There are three sections, Text Strings, Skill Code, and Helper Function(s).
+// You can copy and paste the entire file contents as the code for a new Lambda function,
+//  or copy & paste section #3, the helper function, to the bottom of your existing Lambda code.
+
+
+// 1. Text strings =====================================================================================================
+//    Modify these strings and messages to change the behavior of your Lambda function
+var myBucket = 'alexabucket123';     // replace with your own bucket name!
+var myObject = 'hello.txt';          // replace with your own file name!
+
+// 2. Skill Code =======================================================================================================
+
+
 var Alexa = require('alexa-sdk');
 
 exports.handler = function(event, context, callback) {
@@ -18,8 +33,8 @@ var handlers = {
     'MyIntent': function () {
 
         var myParams = {
-            Bucket: 'alexabucket12',  // replace with your own bucket name!
-            Key: 'hello.txt'          // replace with your own file name!
+            Bucket: myBucket,
+            Key: myObject
         };
 
         S3read(myParams,  myResult => {
@@ -34,8 +49,8 @@ var handlers = {
     }
 };
 
-// END of Intent Handlers ---------------------------------------------------------------------
-// Paste in any helper functions below --------------------------------------------------------
+//    END of Intent Handlers {} ========================================================================================
+// 3. Helper Function  =================================================================================================
 
 
 function S3read(params, callback) {

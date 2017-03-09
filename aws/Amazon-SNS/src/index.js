@@ -8,7 +8,21 @@
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
 
-var myRequest = ['hello','howdy','hi', 'good day'];  // Array of items
+const emoji = {
+    'thumbsup': '\uD83D\uDC4D',
+    'smile': '\uD83D\uDE0A',
+    'star': '\uD83C\uDF1F',
+    'robot': '\uD83E\uDD16'
+}
+
+const bodyText = 'Hello! ' + emoji.smile + ' \n'
+    + 'Here is your link: \n'
+    + 'https://youtu.be/dQw4w9WgXcQ';
+
+const params = {
+    PhoneNumber: '+15082597777',
+    Message: bodyText
+};
 
 // 2. Skill Code =======================================================================================================
 
@@ -32,25 +46,33 @@ var handlers = {
 
     'MyIntent': function () {
 
-        this.emit(':tell', 'the welcome message is, ' + randomPhrase(myRequest) );
+        sendTxtMessage(params, myResult=>{
+
+            var say = myResult;
+            this.emit(':ask', say, 'try again');
+
+        });
 
 
     }
 };
 
-
 //    END of Intent Handlers {} ========================================================================================
 // 3. Helper Function  =================================================================================================
 
+function sendTxtMessage(params, callback) {
 
-function randomPhrase(myData) {
-    // the argument is an array [] of words or phrases
+    var AWS = require('aws-sdk');
+    var SNS = new AWS.SNS();
 
-    var i = 0;
+    SNS.publish(params, function(err, data){
 
-    i = Math.floor(Math.random() * myData.length);
+        console.log('sending message to ' + params.PHONE_NUMBER.toString() );
 
-    return(myData[i]);
+        if (err) console.log(err, err.stack);
+
+        callback('text message sent');
+
+    });
 }
-
 

@@ -24,6 +24,7 @@ See the [AWS SDK reference docs](https://aws.amazon.com/sdk-for-node-js/).
 ### Table of Contents
  * [Amazon-S3](Amazon-S3#title), a file store
  * [Amazon-SES](Amazon-SES#title), an email sending service
+ * [Amazon-SNS](Amazon-SNS#title), an SMS text messaging service
 
 
 ### IAM Roles

@@ -1,5 +1,5 @@
 #### Ingredients
-## random-phrase <a id="title"></a>
+## Random Phrase <a id="title"></a>
 <hr />
 
 
@@ -15,7 +15,7 @@ var myRequest = ['hello','howdy','hi', 'good day'];
 
 You pass in this array and the function will select and return one of the items at random.
 
- + ```randomPhrase(myRequest)```
+ + ```this.emit(':tell', 'the welcome message is, ' + randomPhrase(myRequest) );```
 
 
 #### Instructions for deploying this sample skill

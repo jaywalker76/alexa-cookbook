@@ -8,7 +8,7 @@
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
 
-var myRequest = ['apples','oranges','strawberries'];  // Array of items
+var myRequest = ['hello','howdy','hi', 'good day'];  // Array of items
 
 // 2. Skill Code =======================================================================================================
 
@@ -33,9 +33,7 @@ var handlers = {
     'MyIntent': function () {
 
         this.emit(':tell',
-                'the list contains ' + sayArray(myRequest,  'and')
-                +
-                '. please choose either ' +  sayArray(myRequest,  'or')
+                'the welcome message is, ' + randomPhrase(myRequest)
         );
 
 
@@ -47,31 +45,14 @@ var handlers = {
 // 3. Helper Function  =================================================================================================
 
 
-function sayArray(myData, andor) {
-    // the first argument is an array [] of items
-    // the second argument is the list penultimate word; and/or/nor etc.
+function randomPhrase(myData) {
+    // the argument is an array [] of words or phrases
 
-    var listString = '';
+    var i = 0;
 
-    if (myData.length == 1) {
-        listString = myData[0];
-    } else {
-        for (var i = 0; i < myData.length; i++) {
-            if (i < myData.length - 2) {
-                listString = listString + myData[i] + ', ';
-                if (i = myData.length - 2) {
-                    listString = listString + myData[i] + ', ' + andor + ' ';
-                }
+    i = Math.floor(Math.random() * myData.length);
 
-            } else {
-                listString = listString + myData[i];
-            }
-
-        }
-
-    }
-
-    return(listString);
+    return(myData[i]);
 }
 
 

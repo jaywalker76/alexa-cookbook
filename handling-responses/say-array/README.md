@@ -14,8 +14,8 @@ var myRequest = ['apples','oranges','strawberries'];
 ```
 
 You pass in two arguments: the list array, and the connecting word.
- + the store has apples, oranges, and strawberries ```sayArray(myRequest, 'and', myResult => { ... }```
- + choose either apples, oranges, or strawberries ```sayArray(myRequest, 'or', myResult => { ... }```
+ + ```sayArray(myRequest, 'and')```   the store has apples, oranges, and strawberries
+ + ```sayArray(myRequest, 'or')```    choose either apples, oranges, or strawberries
 
 
 

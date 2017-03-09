@@ -6,10 +6,10 @@
 
 #### Instructions for deploying this sample skill
 
-1. Create a new file on your laptop called ```hello.txt```.  Save the file with the following contents : ```hello from cookbook``` or download the [sample file](https://s3-eu-west-1.amazonaws.com/alexabucket12/hello.txt)
+1. Create a new file on your laptop called ```hello.txt```.  Save the file with the following contents : ```hello from cookbook``` or right-click and download the [sample file](https://s3-eu-west-1.amazonaws.com/alexabucket12/hello.txt)
 1. Go to the [S3 Console](https://console.aws.amazon.com/s3/home) and create a new S3 bucket with a unique name.
 1. Click the **Upload** button to upload the file into your bucket.
-1. Review the [src/index.js](src/index.js) file above.  Notice the line 24 points to the bucket ```alexabucket12```.  You will need to change this to the name of *your new S3 bucket* that you just created.
+1. Review the [src/index.js](src/index.js) file above.  Notice the bucket name is set to ```alexabucket12```.  You will need to change this to the name of *your new S3 bucket* that you just created.
 
 
 #### Add IAM Role Permissions

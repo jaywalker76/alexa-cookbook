@@ -7,8 +7,8 @@
 
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
-var myBucket = 'alexabucket12';      // replace with your own bucket name!
-var myObject = 'hello.txt';          // replace with your own file name!
+
+var myRequest = ['apples','oranges','strawberries'];  // Array of items
 
 // 2. Skill Code =======================================================================================================
 
@@ -32,16 +32,11 @@ var handlers = {
 
     'MyIntent': function () {
 
-        var myParams = {
-            Bucket: myBucket,
-            Key: myObject
-        };
-
-        S3read(myParams,  myResult => {
-                console.log("sent     : " + JSON.stringify(myParams));
+        sayArray(myRequest,  'and', myResult => {
+                console.log("sent     : " + myRequest);
                 console.log("received : " + myResult);
 
-                this.emit(':tell', 'The S 3 file says, ' + myResult );
+                this.emit(':tell', 'the list contains ' + myResult);
 
             }
         );
@@ -49,25 +44,41 @@ var handlers = {
     }
 };
 
+
 //    END of Intent Handlers {} ========================================================================================
 // 3. Helper Function  =================================================================================================
 
 
-function S3read(params, callback) {
-    // call AWS S3
-    var AWS = require('aws-sdk');
-    var s3 = new AWS.S3();
+var https = require('https');
+// https is a default part of Node.JS.  Read the developer doc:  https://nodejs.org/api/https.html
+// try other APIs such as the current bitcoin price : https://btc-e.com/api/2/btc_usd/ticker  returns ticker.last
 
+function sayArray(myData, andor, callback) {
+    // the first argument is an array [] of items
+    // the second argument is the list penultimate word; and/or/nor etc.
 
-    s3.getObject(params, function(err, data) {
-        if(err) { console.log(err, err.stack); }
-        else {
+    var listString = '';
 
-            var fileText = data.Body.toString();  // this is the complete file contents
+    if (myData.length == 1) {
+        listString = myData[0];
+    } else {
+        for (var i = 0; i < myData.length; i++) {
+            if (i < myData.length - 2) {
+                listString = listString + myData[i] + ', ';
+                if (i = myData.length - 2) {
+                    listString = listString + myData[i] + ', ' + andor + ' ';
+                }
 
-            callback(fileText);
+            } else {
+                listString = listString + myData[i];
+            }
 
         }
-    });
+
+    }
+
+
+    callback(listString);
 }
+
 

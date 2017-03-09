@@ -7,8 +7,22 @@
 
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
-var myBucket = 'alexabucket12';      // replace with your own bucket name!
-var myObject = 'hello.txt';          // replace with your own file name!
+var subject = 'Hello' ;
+var bodyText = 'Hello! \n'
+    + 'Here is your link:  \n'
+    + 'https://youtu.be/dQw4w9WgXcQ';
+
+var params = {
+
+    Source: 'robm266@alexamailbox.com',
+    Destination: { ToAddresses: ['robm266@alexamailbox.com'] },
+    Message: {
+        Subject: { Data: subject },
+        Body: { Text: { Data: bodyText } }
+    },
+
+};
+
 
 // 2. Skill Code =======================================================================================================
 
@@ -32,19 +46,12 @@ var handlers = {
 
     'MyIntent': function () {
 
-        var myParams = {
-            Bucket: myBucket,
-            Key: myObject
-        };
+        sendMessage(params, callback=>{
+            console.log('sending message to ' + params.Destination.ToAddresses.toString() + ', status: ' );
+            var say = 'sent the msg';
 
-        S3read(myParams,  myResult => {
-                console.log("sent     : " + JSON.stringify(myParams));
-                console.log("received : " + myResult);
-
-                this.emit(':tell', 'The S 3 file says, ' + myResult );
-
-            }
-        );
+            this.emit(':ask', say, 'try again');
+        });
 
     }
 };
@@ -52,22 +59,22 @@ var handlers = {
 //    END of Intent Handlers {} ========================================================================================
 // 3. Helper Function  =================================================================================================
 
+function sendMessage(params, callback) {
 
-function S3read(params, callback) {
-    // call AWS S3
     var AWS = require('aws-sdk');
-    var s3 = new AWS.S3();
+    // AWS.config.loadFromPath('./awsconfig.json');
+
+    var SES = new AWS.SES();
 
 
-    s3.getObject(params, function(err, data) {
-        if(err) { console.log(err, err.stack); }
-        else {
+    console.log('sending message');
 
-            var fileText = data.Body.toString();  // this is the complete file contents
+    SES.sendEmail(params, function(err, data){
 
-            callback(fileText);
+        if (err) console.log(err, err.stack);
 
-        }
+        callback('message sent');
+
     });
-}
 
+}

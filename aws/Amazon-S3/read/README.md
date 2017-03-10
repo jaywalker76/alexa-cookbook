@@ -13,7 +13,7 @@
 
 
 #### Add IAM Role Permissions
-Before testing your skill, you will need to add permissions to your IAM Role to allow your Lambda function to read from S3.  See the [IAM Policies](../IAM_POLICIES.md) guide and add the  **```AmazonS3ReadOnlyAccess```** policy.
+Before testing your skill, you will need to add permissions to your IAM Role to allow your Lambda function to read from S3.  See the [IAM Policies](../../IAM_POLICIES.md) guide and add the  **```AmazonS3ReadOnlyAccess```** policy.
 
 
  * [Part 2 - Create the skill](./PAGE2.md#title)

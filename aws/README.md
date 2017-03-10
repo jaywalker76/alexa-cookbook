@@ -13,10 +13,11 @@ Your skill code can call AWS services by incorporating into your project the AWS
 
 This Node module is automatically included and available to all AWS Lambda functions.
 
-You can further configure the AWS connection via the Config:
+You can further configure the AWS connection via the Config.  Certain functions require the region to be set.
+Alexa skill developers will likely be using AWS in one of two possible regions: ```eu-west-1``` or ```us-east-1```
 ```
-var myConfig = new AWS.Config();
-myConfig.update({region: 'us-east-1'});
+    AWS.config.update({region: 'eu-west-1'});  // us-east-1
+
 ```
 
 See the [AWS SDK reference docs](https://aws.amazon.com/sdk-for-node-js/).

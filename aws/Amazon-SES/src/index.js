@@ -7,15 +7,18 @@
 
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
-var subject = 'Hello' ;
+
+var AWSregion = 'eu-west-1';  // us-east-1
+
+var subject = 'Hello email for you' ;
 var bodyText = 'Hello! \n'
     + 'Here is your link:  \n'
     + 'https://youtu.be/dQw4w9WgXcQ';
 
 var params = {
 
-    Source: 'robm266@alexamailbox.com',
-    Destination: { ToAddresses: ['robm266@alexamailbox.com'] },
+    Source: 'robm26@cookbook.com',
+    Destination: { ToAddresses: ['robm26@cookbook.com'] },
     Message: {
         Subject: { Data: subject },
         Body: { Text: { Data: bodyText } }
@@ -25,7 +28,6 @@ var params = {
 
 
 // 2. Skill Code =======================================================================================================
-
 
 var Alexa = require('alexa-sdk');
 
@@ -62,10 +64,9 @@ var handlers = {
 function sendMessage(params, callback) {
 
     var AWS = require('aws-sdk');
-    // AWS.config.loadFromPath('./awsconfig.json');
+    AWS.config.update({region: AWSregion});
 
     var SES = new AWS.SES();
-
 
     console.log('sending message');
 

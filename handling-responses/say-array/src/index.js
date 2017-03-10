@@ -8,7 +8,7 @@
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
 
-var myRequest = ['apples','oranges','strawberries'];  // Array of items
+var myRequest = ['apples', 'oranges', 'strawberries'];  // Array of items
 
 // 2. Skill Code =======================================================================================================
 
@@ -56,17 +56,22 @@ function sayArray(myData, andor) {
     if (myData.length == 1) {
         listString = myData[0];
     } else {
-        for (var i = 0; i < myData.length; i++) {
-            if (i < myData.length - 2) {
-                listString = listString + myData[i] + ', ';
-                if (i = myData.length - 2) {
-                    listString = listString + myData[i] + ', ' + andor + ' ';
+        if (myData.length == 2) {
+            listString = myData[0] + ' ' + andor + ' ' + myData[1];
+        } else {
+
+            for (var i = 0; i < myData.length; i++) {
+                if (i < myData.length - 2) {
+                    listString = listString + myData[i] + ', ';
+                    if (i = myData.length - 2) {
+                        listString = listString + myData[i] + ', ' + andor + ' ';
+                    }
+
+                } else {
+                    listString = listString + myData[i];
                 }
 
-            } else {
-                listString = listString + myData[i];
             }
-
         }
 
     }
